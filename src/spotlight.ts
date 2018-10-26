@@ -1,5 +1,7 @@
 
 export class Spotlight {
+  private readonly DRAW_RATE_MS = 1000; // How long do we wait between each redraw?
+
   private readonly canvas: HTMLCanvasElement;
   private readonly context: CanvasRenderingContext2D;
 
@@ -57,7 +59,7 @@ export class Spotlight {
     this.drawHand(this.context, radius, angle);
 
     // Queue a redraw
-    window.requestAnimationFrame(() => this.draw());
+    setTimeout(() => this.draw(), this.DRAW_RATE_MS);
   }
 
   // This draws all the ticks and numbers
